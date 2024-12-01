@@ -17,18 +17,18 @@ with open(input_file, 'r') as f:
         second_list.append(int(numbers[1]))
         freq_list_second[numbers[-1]] += 1
 
-similarity_score = 0
-for num in first_list:
-    similarity_score += (num * freq_list_second[str(num)])
 
 heapq.heapify(first_list)
 heapq.heapify(second_list)
 
 
-
-
-print(similarity_score)
 total_distance = 0
+similarity_score = 0
+for num in first_list:
+    similarity_score += (num * freq_list_second[str(num)])
+
+print(f"Similarity Scores: {similarity_score}")
+
 
 while(len(first_list) > 0):
     first_list_min = heapq.heappop(first_list)
@@ -36,6 +36,5 @@ while(len(first_list) > 0):
 
     total_distance += abs(second_list_min - first_list_min)
 
-print(total_distance)
-
+print(f"Total Distance: {total_distance}")
 
